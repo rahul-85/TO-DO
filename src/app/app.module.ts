@@ -7,11 +7,15 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { ListTaskComponent } from './list-task/list-task.component';
+import { CardComponent } from './list-task/card/card.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CreateTaskComponent
+    CreateTaskComponent,
+    ListTaskComponent,
+    CardComponent
   ],
   imports: [
     AppRoutingModule,

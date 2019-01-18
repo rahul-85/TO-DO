@@ -12,6 +12,7 @@ export class AppComponent {
   createTaskFlag=false;
   firstPageFlag=true;
   secondPageFlag=true;
+  showTasksFlag=false;
   firstButton() {
       this.firstPageFlag=false;
       this.createTaskFlag=true;
@@ -21,6 +22,7 @@ export class AppComponent {
     this.createTaskFlag=false;
     this.secondPageFlag=false;
     this.firstPageFlag=false;
+    this.showTasksFlag=true;
   }
 }
 
