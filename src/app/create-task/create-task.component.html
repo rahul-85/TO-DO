@@ -1,0 +1,39 @@
+<mat-card class="example-form" style="width:300px; margin:0 auto;" >
+
+        <form>
+              <h1 style="text-align: center"> List Creation </h1>
+              <mat-form-field class="example-full-width">
+                  <input matInput required placeholder="Title" name="title" [(ngModel)]="title">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <input matInput required placeholder="Description" name="desc" [(ngModel)]="desc">
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <input required matInput [matDatepicker]="startDate1"
+                   placeholder="Choose a starting date" name="startDate" [(ngModel)]="startDate">
+                  <mat-datepicker-toggle matSuffix [for]="startDate1"></mat-datepicker-toggle>
+                  <mat-datepicker #startDate1></mat-datepicker>
+              </mat-form-field>
+
+              <mat-form-field class="example-full-width">
+                  <input required matInput [matDatepicker]="endDate1"
+                   placeholder="Choose an end date" name="endDate" [(ngModel)]="endDate">
+                  <mat-datepicker-toggle matSuffix [for]="endDate1"></mat-datepicker-toggle>
+                  <mat-datepicker #endDate1  ></mat-datepicker>
+              </mat-form-field>
+
+            <br>
+
+              <button mat-raised-button color="primary" disabled="false" (click)="onSave()">Save</button>
+                  &nbsp;
+              <button mat-raised-button color="primary">Cancel</button>
+              
+
+
+        </form>
+        <div *ngIf="resultFlag">
+            {{t | json}}
+        </div>
+</mat-card>
