@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
+import { Util } from '../util';
 import { TaskCreateService } from '../task-create.service';
 @Component({
   selector: 'app-create-task',
@@ -15,6 +16,7 @@ export class CreateTaskComponent implements OnInit {
     endDate: Date;
     t: Task;
     resultFlag: Boolean = false;
+   
     constructor(private taskCreateService: TaskCreateService) { }
 
     ngOnInit() {
@@ -24,8 +26,10 @@ export class CreateTaskComponent implements OnInit {
         if(this.isValidTitle(this.title) && this.isValidDesc(this.desc) && 
         this.isValidStartDate(this.startDate) && this.isValidEndDate(this.endDate)) {
 
-            this.t = new Task(this.title , this.desc , this.startDate , this.endDate);
+            let utilObject = new Util();
+            this.t = new Task(this.title , this.desc , utilObject.extractShortDate(this.startDate) , utilObject.extractShortDate(this.endDate));
             console.log(this.t); 
+            
             alert('Data Saved');
             // this.taskCreateService.submitTask(this.t)
             // .subscribe(

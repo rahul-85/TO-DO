@@ -9,7 +9,7 @@ import { Task } from '../Task';
 export class ListTaskComponent implements OnInit {
 
   description = "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting."
-  date = new Date();
+  date = '2019-01-21';
   task = new Task('Task1',this.description,this.date,this.date);
   tasks = [
     new Task('Task 1',this.description,this.date,this.date),

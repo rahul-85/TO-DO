@@ -5,6 +5,7 @@ const port=1336;
 const app=express();
 app.use(bodyParser.json());
 app.use(cors());
+app.use("/tasks",tasks);
 app.get('/',function(req,res){
     res.send("hello from server"+port);
 });
