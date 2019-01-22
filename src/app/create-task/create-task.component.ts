@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { Util } from '../util';
 import { TaskCreateService } from '../task-create.service';
+import { TaskArrayService } from '../task-array.service';
 @Component({
   selector: 'app-create-task',
   templateUrl: './create-task.component.html',
@@ -17,7 +18,7 @@ export class CreateTaskComponent implements OnInit {
     t: Task;
     resultFlag: Boolean = false;
    
-    constructor(private taskCreateService: TaskCreateService) { }
+    constructor(private taskArray: TaskArrayService) { }
 
     ngOnInit() {
     }
@@ -30,7 +31,9 @@ export class CreateTaskComponent implements OnInit {
             this.t = new Task(this.title , this.desc , utilObject.extractShortDate(this.startDate) , utilObject.extractShortDate(this.endDate));
             console.log(this.t); 
             
+            this.taskArray.pushATask(this.t);
             alert('Data Saved');
+            console.log(this.taskArray.showAllTasks());
             // this.taskCreateService.submitTask(this.t)
             // .subscribe(
             //     data => {

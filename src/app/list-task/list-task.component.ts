@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { TaskCreateService } from '../task-create.service';
+import { TaskArrayService } from '../task-array.service';
 
 @Component({
   selector: 'app-list-task',
@@ -11,28 +12,28 @@ export class ListTaskComponent implements OnInit {
 
   description = "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting."
   date = '2019-01-21';
-  task = new Task('Task1',this.description,this.date,this.date);
-  tasks = [
-    new Task('Task 1',this.description,this.date,this.date),
-    new Task('Task 2',this.description,this.date,this.date),
-    new Task('Task 3',this.description,this.date,this.date),
-    new Task('Task 4',this.description,this.date,this.date),
-    new Task('Task 5',this.description,this.date,this.date),
-    new Task('Task 6',this.description,this.date,this.date),
-    new Task('Task 7',this.description,this.date,this.date),
-    new Task('Task 8',this.description,this.date,this.date),
-    new Task('Task 9',this.description,this.date,this.date),
-    new Task('Task 10',this.description,this.date,this.date),
-    new Task('Task 11',this.description,this.date,this.date),
-    new Task('Task 12',this.description,this.date,this.date),
-    new Task('Task 13',this.description,this.date,this.date),
-    new Task('Task 14',this.description,this.date,this.date),
-    new Task('Task 15',this.description,this.date,this.date),
-  ];
+  // task = new Task('Task1',this.description,this.date,this.date);
+  // tasks = [
+  //   new Task('Task 1',this.description,this.date,this.date),
+  //   new Task('Task 2',this.description,this.date,this.date),
+  //   new Task('Task 3',this.description,this.date,this.date),
+  //   new Task('Task 4',this.description,this.date,this.date),
+  //   new Task('Task 5',this.description,this.date,this.date),
+  //   new Task('Task 6',this.description,this.date,this.date),
+  //   new Task('Task 7',this.description,this.date,this.date),
+  //   new Task('Task 8',this.description,this.date,this.date),
+  //   new Task('Task 9',this.description,this.date,this.date),
+  //   new Task('Task 10',this.description,this.date,this.date),
+  //   new Task('Task 11',this.description,this.date,this.date),
+  //   new Task('Task 12',this.description,this.date,this.date),
+  //   new Task('Task 13',this.description,this.date,this.date),
+  //   new Task('Task 14',this.description,this.date,this.date),
+  //   new Task('Task 15',this.description,this.date,this.date),
+  // ];
+  tasks=this.taskArray.showAllTasks();
   
-
-  constructor() { }
-
+  
+  constructor(private taskArray: TaskArrayService) { }
   deleteTask(task:Task){
     let deleteIndex : number;
     for(let i = 0;i< this.tasks.length;i++)
