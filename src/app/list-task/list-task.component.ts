@@ -33,7 +33,7 @@ export class ListTaskComponent implements OnInit {
 
   constructor() { }
 
-  displayTask(task:Task){
+  deleteTask(task:Task){
     let deleteIndex : number;
     for(let i = 0;i< this.tasks.length;i++)
     {
