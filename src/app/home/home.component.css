@@ -1,0 +1,10 @@
+body{
+    background-color: black;
+  }
+  .button {
+    min-width: 150px;
+    max-width: 500px;
+    margin-left: 550px;
+  }
+  
+  
