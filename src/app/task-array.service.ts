@@ -6,7 +6,7 @@ import { Task } from './Task';
 })
 export class TaskArrayService {
 
-  private tasks: Array<Task> = new Array() ;
+  tasks: Array<Task> = new Array() ;
   constructor() { }
   pushATask(task: Task) {
     this.tasks.push(task);
