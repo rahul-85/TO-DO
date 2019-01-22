@@ -12,6 +12,7 @@ import { CardComponent } from './list-task/card/card.component';
 import { CreateTaskComponent } from './create-task/create-task.component';
 import { ListTaskComponent } from './list-task/list-task.component';
 import { HomeComponent } from './home/home.component';
+import { ShowTaskComponent } from './show-task/show-task.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { HomeComponent } from './home/home.component';
     CardComponent,
     CreateTaskComponent,
     ListTaskComponent,
-    HomeComponent
+    HomeComponent,
+    ShowTaskComponent
   ],
   imports: [
     AppRoutingModule,
