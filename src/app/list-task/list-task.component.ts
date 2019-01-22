@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
+import { TaskCreateService } from '../task-create.service';
 
 @Component({
   selector: 'app-list-task',
@@ -28,8 +29,22 @@ export class ListTaskComponent implements OnInit {
     new Task('Task 14',this.description,this.date,this.date),
     new Task('Task 15',this.description,this.date,this.date),
   ];
+  
 
   constructor() { }
+
+  displayTask(task:Task){
+    let deleteIndex : number;
+    for(let i = 0;i< this.tasks.length;i++)
+    {
+      if(this.tasks[i].title===task.title)
+      {
+        deleteIndex = i;
+      }
+    }
+    this.tasks.splice(deleteIndex,1);
+    console.log(task);
+  }
 
   ngOnInit() {
   }

@@ -1,13 +1,13 @@
 
 <h1 style="text-align: center" *ngIf="firstPageFlag"> TO DO Web Application </h1>
 <button *ngIf="firstPageFlag" mat-raised-button color="primary" class="button" 
-    (click)="firstButton()"> Create a task </button>
+     routerLink = '/createTask' (click) = 'firstButton()'> Create a task </button>
     <br>
     <br>
 <button *ngIf="secondPageFlag" mat-raised-button color="primary" class="button" 
-    (click)="secondButton()"> Show all tasks </button>
+     routerLink = '/showTasks' (click) = 'secondButton()'> Show all tasks </button>
 
 <br>
 <br>
-<app-create-task *ngIf="createTaskFlag"></app-create-task>
-<app-list-task *ngIf="showTasksFlag"></app-list-task>
+
+<router-outlet></router-outlet>

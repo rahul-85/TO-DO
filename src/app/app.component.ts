@@ -9,20 +9,20 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'todo-webapp';
-  createTaskFlag=false;
+  // createTaskFlag=false;
   firstPageFlag=true;
   secondPageFlag=true;
-  showTasksFlag=false;
+  // showTasksFlag=false;
   firstButton() {
       this.firstPageFlag=false;
-      this.createTaskFlag=true;
+      // this.createTaskFlag=true;
       this.secondPageFlag=false;
   }
   secondButton() {
-    this.createTaskFlag=false;
+    // this.createTaskFlag=false;
     this.secondPageFlag=false;
     this.firstPageFlag=false;
-    this.showTasksFlag=true;
+    // this.showTasksFlag=true;
   }
 }
 
