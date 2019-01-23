@@ -1,3 +1,5 @@
+<button mat-raised-button color="primary" (click) = "onDeleteAll()" *ngIf = "deleteAllFlag" >Delete All</button>
+<br>
 <mat-grid-list cols="5" >
   <mat-grid-tile *ngFor="let task of tasks"  cdkDrag>
     <!-- <app-card (deletedTaskEvent)="deleteTask($event)" [task]="task"></app-card> -->

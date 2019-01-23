@@ -15,14 +15,22 @@ export class ListTaskComponent implements OnInit {
 
   tasks=this.taskArray.showAllTasks();
   
-  
+  deleteAllFlag : Boolean=false;
   constructor(private taskArray: TaskArrayService, private router: Router) { }
   selectTask(task: Task){
+  
     if(this.checkIfPresent(task)===true){
       this.deleteTask(task);
     }
     else{
       this.selectedTaskArray.push(task);
+    }
+
+    if(this.selectedTaskArray.length>0) {
+        this.deleteAllFlag=true;
+    }
+    else {
+        this.deleteAllFlag=false;
     }
     console.log("Number of selections: "+this.selectedTaskArray.length);
   }
@@ -52,7 +60,25 @@ export class ListTaskComponent implements OnInit {
     tasks.splice(deleteIndex,1);
     // console.log(this.router.url);
   }
+  onDeleteAll() {
+      let selectedTasks = this.selectedTaskArray;
+      for(let i = 0 ; i < selectedTasks.length ; i++) {
+        let deleteIndex: number;
+        for(let j = 0 ; j < this.tasks.length ; j++) {
+            if(selectedTasks[i].title === this.tasks[j].title) {
+                deleteIndex=j;
+                break;
+            }
+        }
+        this.tasks.splice(deleteIndex,1);
+      }
 
+      this.selectedTaskArray.splice(0,this.selectedTaskArray.length);
+      if(this.selectedTaskArray.length ===0) {
+        this.deleteAllFlag=false;
+      }
+      console.log(this.tasks);
+  }
   ngOnInit() {
       
   }
