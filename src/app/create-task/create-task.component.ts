@@ -27,6 +27,7 @@ export class CreateTaskComponent implements OnInit {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['id'];
         });
+        this.resultFlag=true;
         let newTask = this.taskArray.showAllTasks()[this.id];
         if(this.id !== undefined && this.id !== null && newTask !== undefined && newTask !== null)
         {
@@ -44,6 +45,7 @@ export class CreateTaskComponent implements OnInit {
         this.isValidStartDate(this.startDate) && this.isValidEndDate(this.endDate,this.startDate)) {
 
             let utilObject = new Util();
+            this.resultFlag=true;
             this.t = new Task(this.title , this.desc , this.startDate , this.endDate);
             console.log(this.t); 
             
