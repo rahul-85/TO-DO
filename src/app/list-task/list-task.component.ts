@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { TaskCreateService } from '../task-create.service';
 import { TaskArrayService } from '../task-array.service';
-
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
@@ -33,7 +33,7 @@ export class ListTaskComponent implements OnInit {
   tasks=this.taskArray.showAllTasks();
   
   
-  constructor(private taskArray: TaskArrayService) { }
+  constructor(private taskArray: TaskArrayService, private router: Router) { }
   deleteTask(task:Task){
     let deleteIndex : number;
     for(let i = 0;i< this.tasks.length;i++)
@@ -48,6 +48,7 @@ export class ListTaskComponent implements OnInit {
   }
 
   ngOnInit() {
+      
   }
 
 }

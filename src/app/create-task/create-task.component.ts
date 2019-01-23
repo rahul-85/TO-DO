@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../Task';
 import { Util } from '../util';
-import { TaskCreateService } from '../task-create.service';
+import { Router , ActivatedRoute } from '@angular/router';
 import { TaskArrayService } from '../task-array.service';
 @Component({
   selector: 'app-create-task',
@@ -17,10 +17,26 @@ export class CreateTaskComponent implements OnInit {
     endDate: Date;
     t: Task;
     resultFlag: Boolean = false;
-   
-    constructor(private taskArray: TaskArrayService) { }
+    sub: any;
+    id: number;
+
+    constructor(private taskArray: TaskArrayService , private router: Router , private route: ActivatedRoute ) { }
 
     ngOnInit() {
+        // console.log(this.router.url);
+        this.sub = this.route.params.subscribe(params => {
+            this.id = +params['id'];
+        });
+        let newTask = this.taskArray.showAllTasks()[this.id];
+        if(this.id !== undefined && this.id !== null && newTask !== undefined && newTask !== null)
+        {
+            
+            this.title = newTask.title;
+            this.desc = newTask.desc;
+            this.startDate = newTask.startDate;
+            this.endDate = newTask.endDate;
+        }
+
     }
 
     onSave() {
@@ -28,12 +44,17 @@ export class CreateTaskComponent implements OnInit {
         this.isValidStartDate(this.startDate) && this.isValidEndDate(this.endDate)) {
 
             let utilObject = new Util();
-            this.t = new Task(this.title , this.desc , utilObject.extractShortDate(this.startDate) , utilObject.extractShortDate(this.endDate));
+            this.t = new Task(this.title , this.desc , this.startDate , this.endDate);
             console.log(this.t); 
             
-            this.taskArray.pushATask(this.t);
+            var index = this.taskArray.showAllTasks().indexOf(this.t);
+            if(index === -1) {
+                this.taskArray.pushATask(this.t);
+            }
             alert('Data Saved');
             console.log(this.taskArray.showAllTasks());
+            this.router.navigate(['/showATask']);
+            
             // this.taskCreateService.submitTask(this.t)
             // .subscribe(
             //     data => {

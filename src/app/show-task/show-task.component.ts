@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , Output, EventEmitter } from '@angular/core';
 import { Task } from '../Task';
+import { TaskArrayService } from '../task-array.service';
 
 @Component({
   selector: 'app-show-task',
@@ -8,10 +9,14 @@ import { Task } from '../Task';
 })
 export class ShowTaskComponent implements OnInit {
 
-  public task:Task;
-  constructor() { }
+  public task: Task;
+  
+  constructor(private taskArray: TaskArrayService) { }
 
   ngOnInit() {
+      this.task=this.taskArray.showAllTasks()[this.taskArray.showAllTasks().length-1];
   }
+
+  
 
 }
