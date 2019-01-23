@@ -34,18 +34,18 @@ export class ListTaskComponent implements OnInit {
   
   
   constructor(private taskArray: TaskArrayService, private router: Router) { }
-  deleteTask(task:Task){
-    let deleteIndex : number;
-    for(let i = 0;i< this.tasks.length;i++)
-    {
-      if(this.tasks[i].title===task.title)
-      {
-        deleteIndex = i;
-      }
-    }
-    this.tasks.splice(deleteIndex,1);
-    console.log(task);
-  }
+  // deleteTask(task:Task){
+  //   let deleteIndex : number;
+  //   for(let i = 0;i< this.tasks.length;i++)
+  //   {
+  //     if(this.tasks[i].title===task.title)
+  //     {
+  //       deleteIndex = i;
+  //     }
+  //   }
+  //   this.tasks.splice(deleteIndex,1);
+  //   console.log(task);
+  // }
 
   ngOnInit() {
       

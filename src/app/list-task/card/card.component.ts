@@ -10,13 +10,25 @@ import { Router } from '@angular/router';
 export class CardComponent implements OnInit {
 
   @Input() public task: Task;
-  @Output() public deletedTaskEvent = new EventEmitter();
+  // @Output() public deletedTaskEvent = new EventEmitter();
   
   constructor(private taskArray: TaskArrayService , private router: Router) { }
 
   onDelete()
   {
-    this.deletedTaskEvent.emit(this.task);
+    // this.deletedTaskEvent.emit(this.task);
+    let deleteIndex:number;
+    let tasks = this.taskArray.showAllTasks();
+    for(let i = 0;i< tasks.length;i++) {
+      if(tasks[i].title===this.task.title) {
+        deleteIndex = i;
+      }
+    }
+    tasks.splice(deleteIndex,1);
+    // console.log(this.router.url);
+    if(this.router.url==="/showATask"){
+      this.router.navigate(['/home']);
+    }
   }
 
   onUpdate() {
