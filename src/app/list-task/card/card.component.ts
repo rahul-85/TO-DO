@@ -10,13 +10,13 @@ import { Router } from '@angular/router';
 export class CardComponent implements OnInit {
 
   @Input() public task: Task;
-  // @Output() public deletedTaskEvent = new EventEmitter();
+  @Output() public selectedTaskEvent = new EventEmitter();
+  selected = false;
   
   constructor(private taskArray: TaskArrayService , private router: Router) { }
 
   onDelete()
   {
-    // this.deletedTaskEvent.emit(this.task);
     let deleteIndex:number;
     let tasks = this.taskArray.showAllTasks();
     for(let i = 0;i< tasks.length;i++) {
@@ -42,6 +42,10 @@ export class CardComponent implements OnInit {
     this.router.navigate(['/createTask',id]);
   }
 
+  onSelect(){
+    this.selected=!this.selected;
+    this.selectedTaskEvent.emit(this.task);
+  }
   ngOnInit() {
     
   }

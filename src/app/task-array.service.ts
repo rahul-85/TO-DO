@@ -7,6 +7,8 @@ import { Task } from './Task';
 export class TaskArrayService {
 
   tasks: Array<Task> = new Array() ;
+  
+  
   constructor() { }
   pushATask(task: Task) {
     this.tasks.push(task);
