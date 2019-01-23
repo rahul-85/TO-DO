@@ -1,22 +1,24 @@
-<mat-card class="example-card">
-  <mat-card-header>
-    <mat-card-title> {{ task.title }}</mat-card-title>
-  </mat-card-header>
-  <mat-card-content>
-    <p>
-     {{task.desc}}
-    </p>
-    <span>
-      Start Date: {{ task.startDate.toDateString()}}
-    </span>
-    <br>
-    <br>
-    <span>
-        End Date: {{ task.endDate.toDateString()}}
-    </span>
-    </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button color="primary" (click) = "onUpdate()">Update</button>
-    <button mat-raised-button color="primary" (click)="onDelete()">Delete</button>
-  </mat-card-actions>
-</mat-card>
+<div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title> {{ task.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+       {{task.desc}}
+      </p>
+      <span>
+        Start Date: {{ task.startDate.toDateString()}}
+      </span>
+      <br>
+      <br>
+      <span>
+          End Date: {{ task.endDate.toDateString()}}
+      </span>
+      </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click) = "onUpdate()">Update</button>
+      <button mat-raised-button color="primary" (click)="onDelete()">Delete</button>
+    </mat-card-actions>
+  </mat-card>
+</div>
