@@ -41,7 +41,7 @@ export class CreateTaskComponent implements OnInit {
 
     onSave() {
         if(this.isValidTitle(this.title) && this.isValidDesc(this.desc) && 
-        this.isValidStartDate(this.startDate) && this.isValidEndDate(this.endDate)) {
+        this.isValidStartDate(this.startDate) && this.isValidEndDate(this.endDate,this.startDate)) {
 
             let utilObject = new Util();
             this.t = new Task(this.title , this.desc , this.startDate , this.endDate);
@@ -63,6 +63,11 @@ export class CreateTaskComponent implements OnInit {
             //     },
             //     error => console.error("Error!", error)
             // );
+        }
+        else {
+            if(this.endDate < this.startDate) {
+                alert("End Date should not be before Start Date");
+            }
         }
          
     }
@@ -89,8 +94,8 @@ export class CreateTaskComponent implements OnInit {
         else
             return false;
     }
-    isValidEndDate(endDate: Date): Boolean {
-        if(endDate !== undefined && endDate !== null) {
+    isValidEndDate(endDate: Date, startDate: Date): Boolean {
+        if(endDate !== undefined && endDate !== null && endDate >= startDate) {
             return true;
         }
         else
