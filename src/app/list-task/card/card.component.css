@@ -1,3 +1,11 @@
 .example-card {
     max-width: 180px;
   }
+
+  .highlight{
+    background: skyblue;
+  }
+  
+  .not-highlight{
+    background: #fbeafc;
+  }

@@ -3,6 +3,7 @@ import { Task } from '../Task';
 import { TaskCreateService } from '../task-create.service';
 import { TaskArrayService } from '../task-array.service';
 import { Router } from '@angular/router';
+import { FLAGS } from '@angular/core/src/render3/interfaces/view';
 @Component({
   selector: 'app-list-task',
   templateUrl: './list-task.component.html',
@@ -10,42 +11,47 @@ import { Router } from '@angular/router';
 })
 export class ListTaskComponent implements OnInit {
 
-  description = "The Shiba Inu is the smallest of the six original and distinct spitz breeds of dog from Japan.A small, agile dog that copes very well with mountainous terrain, the Shiba Inu was originally bred for hunting."
-  date = '2019-01-21';
-  // task = new Task('Task1',this.description,this.date,this.date);
-  // tasks = [
-  //   new Task('Task 1',this.description,this.date,this.date),
-  //   new Task('Task 2',this.description,this.date,this.date),
-  //   new Task('Task 3',this.description,this.date,this.date),
-  //   new Task('Task 4',this.description,this.date,this.date),
-  //   new Task('Task 5',this.description,this.date,this.date),
-  //   new Task('Task 6',this.description,this.date,this.date),
-  //   new Task('Task 7',this.description,this.date,this.date),
-  //   new Task('Task 8',this.description,this.date,this.date),
-  //   new Task('Task 9',this.description,this.date,this.date),
-  //   new Task('Task 10',this.description,this.date,this.date),
-  //   new Task('Task 11',this.description,this.date,this.date),
-  //   new Task('Task 12',this.description,this.date,this.date),
-  //   new Task('Task 13',this.description,this.date,this.date),
-  //   new Task('Task 14',this.description,this.date,this.date),
-  //   new Task('Task 15',this.description,this.date,this.date),
-  // ];
+  selectedTaskArray : Array<Task> = new Array() ;
+
   tasks=this.taskArray.showAllTasks();
   
   
   constructor(private taskArray: TaskArrayService, private router: Router) { }
-  // deleteTask(task:Task){
-  //   let deleteIndex : number;
-  //   for(let i = 0;i< this.tasks.length;i++)
-  //   {
-  //     if(this.tasks[i].title===task.title)
-  //     {
-  //       deleteIndex = i;
-  //     }
-  //   }
-  //   this.tasks.splice(deleteIndex,1);
-  //   console.log(task);
-  // }
+  selectTask(task: Task){
+    if(this.checkIfPresent(task)===true){
+      this.deleteTask(task);
+    }
+    else{
+      this.selectedTaskArray.push(task);
+    }
+    console.log("Number of selections: "+this.selectedTaskArray.length);
+  }
+
+  checkIfPresent(task:Task): Boolean
+  {
+    let flag = false;
+    for(let i=0;i<this.selectedTaskArray.length;i++)
+    {
+      if(this.selectedTaskArray[i].title===task.title){
+        flag = true;
+        break;
+      }
+    }
+    return flag;
+  }
+
+  deleteTask(task:Task){
+    let deleteIndex:number;
+    let tasks = this.selectedTaskArray;
+    for(let i = 0;i< tasks.length;i++) {
+      if(tasks[i].title===task.title) {
+        deleteIndex = i;
+        break;
+      }
+    }
+    tasks.splice(deleteIndex,1);
+    // console.log(this.router.url);
+  }
 
   ngOnInit() {
       
