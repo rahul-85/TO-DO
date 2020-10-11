@@ -1,0 +1,12 @@
+.example-card {
+    max-width: 180px;
+  }
+
+  .highlight{
+    background: skyblue;
+    border: 2px solid black;
+  }
+  
+  .not-highlight{
+    background: #fbeafc;
+  }
